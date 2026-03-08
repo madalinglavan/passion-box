@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> PassionBox </title>
+
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+<div class="intro">
+  <div class="intro-logo">
+    <span>P</span>
+    <span>A</span>
+    <span>S</span>
+    <span>S</span>
+    <span>I</span>
+    <span>O</span>
+    <span>N</span>
+    
+    <span>B</span>
+    <span>O</span>
+    <span>X</span>
+    <span>✦</span>
+  </div>
+</div>
+<h1 class="logo">
+   PassionBox ✦
+</h1>
+<p class="subtitle">Couple Games Experience</p>
+
+<!-- GLOBAL SCORE -->
+<div class="global-score">
+  <div class="score he">
+    <img id="avatarHe" class="avatar" src="images/default-he.png">
+    <span id="labelHe">EL</span>
+    <span id="globalHe">0</span>
+  </div>
+
+  <div class="score she">
+    <img id="avatarShe" class="avatar" src="images/default-she.png">
+    <span id="labelShe">EA</span>
+    <span id="globalShe">0</span>
+  </div>
+</div>
+
+<!-- BIG BOX -->
+<div id="bigBox" class="big-box hidden">🎁</div>
+
+<!-- OVERLAY CADOU -->
+<div id="overlay" class="overlay hidden">
+  <div class="overlay-box">
+    <p id="overlayText"></p>
+    <button id="closeOverlay">OK</button>
+  </div>
+</div>
+
+<!-- OVERLAY NUME CUPLU -->
+<div id="namesOverlay" class="overlay hidden">
+
+  <div class="overlay-box">
+
+    <h3>💖Cuplu</h3>
+
+    <input type="text" id="nameHe" placeholder="Numele lui">
+    <input type="text" id="nameShe" placeholder="Numele ei">
+    <div class="avatar-picker">
+
+      <p>Alege avatar pentru el</p>
+      <div id="avatarSelectHe" class="avatar-select"></div>
+      <input type="file" id="uploadHe" accept="image/*">
+
+      <p>Alege avatar pentru ea</p>
+      <div id="avatarSelectShe" class="avatar-select"></div>
+      <input type="file" id="uploadShe" accept="image/*">
+
+    </div>
+
+    <button id="saveNames">Salvează</button>
+
+  </div>
+
+</div>
+
+<div class="games-grid">
+
+  <a href="games/card-game/index.html" class="game-card">
+    <div class="icon">🂡</div>
+    <h2>Cards Game</h2>
+  </a>
+
+  <a href="games/wheel-game/index.html" class="game-card">
+    <div class="icon">🌀</div>
+    <h2>Wheel Game</h2>
+  </a>
+
+  <a href="games/xo/index.html" class="game-card">
+    <div class="icon">❌⭕</div>
+    <h2>XO – Lover’s Game</h2>
+  </a>
+<a href="roleplay/index.html" class="game-card">
+  <div class="icon">🎭</div>
+  <h2>Roleplay Generator</h2>
+</a>
+
+</div>
+<button id="throwBtn" class="throw-btn">🎲</button>
+
+<div id="stone" class="stone hidden">💥</div>
+<button id="fullscreenBtn" class="fullscreen-btn">
+  ⛶
+</button>
+
+<button id="editNamesBtn" class="edit-names">
+  ⚙
+</button>
+
+
+
+
+<script src="globalstats.js" defer></script>
+<script src="js/menu.js" defer></script>
+
+</body>
+</html>
