@@ -362,39 +362,61 @@ window.addEventListener("load", () => {
   }, 2000); // durata totală intro
 });
 
+document.addEventListener("DOMContentLoaded", () => {
 
+  const fullscreenBtn = document.getElementById("fullscreenBtn");
 
-
-
-/*************************
- * AUTO FULLSCREEN SYSTEM
- *************************/
-
-function enterFullscreen() {
-
-  const el = document.documentElement;
-
-  if (el.requestFullscreen) {
-    el.requestFullscreen();
-  } else if (el.webkitRequestFullscreen) {
-    el.webkitRequestFullscreen();
-  } else if (el.msRequestFullscreen) {
-    el.msRequestFullscreen();
+  function enterFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(()=>{});
+    }
   }
 
-}
+  function exitFullscreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  }
 
-function autoFullscreen() {
+  function updateFullscreenUI() {
 
-  if (localStorage.getItem("pb_fullscreen") === "true") {
+    if (!fullscreenBtn) return;
 
-    if (!document.fullscreenElement) {
-      enterFullscreen();
+    if (document.fullscreenElement) {
+
+      fullscreenBtn.classList.add("active");
+      fullscreenBtn.textContent = "✕";
+      localStorage.setItem("pb_fullscreen", "true");
+
+    } else {
+
+      fullscreenBtn.classList.remove("active");
+      fullscreenBtn.textContent = "⛶";
+      localStorage.setItem("pb_fullscreen", "false");
+
     }
 
   }
 
-}
+  if (fullscreenBtn) {
 
-/* fullscreen pornește la primul click/touch */
-document.addEventListener("pointerdown", autoFullscreen, { once: true });
+    fullscreenBtn.onclick = () => {
+
+      if (!document.fullscreenElement) {
+        enterFullscreen();
+      } else {
+        exitFullscreen();
+      }
+
+    };
+
+  }
+
+  document.addEventListener("fullscreenchange", updateFullscreenUI);
+
+  /* dacă fullscreen era activ în menu */
+  if (localStorage.getItem("pb_fullscreen") === "true") {
+    enterFullscreen();
+  }
+
+});
