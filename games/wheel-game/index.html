@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌀 Wheel Game</title>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/f26a888174.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="intro">
+  <div class="intro-logo">
+    <span>W</span>
+    <span>H</span>
+    <span>E</span>
+    <span>E</span>
+    <span>L</span>
+    <span>&nbsp</span>
+    <span>G</span>
+    <span>A</span>
+    <span>M</span>
+    <span>E</span>
+  </div>
+</div>
+<!-- BACK TO MENU -->
+<div class="control-dock">
+  <button class="back-menu" data-tip="Meniu" onclick="location.href='../../index.html'">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
+
+  <button id="switchPlayer" data-tip="Schimbă jucătorul">
+    <i class="fa-solid fa-mars"></i>
+  </button>
+
+  <button id="resetScore" data-tip="Reset scor">
+    <i class="fa-solid fa-broom"></i>
+  </button>
+</div>
+
+
+<!-- SCORE -->
+<div id="scoreBoard">
+
+  <div class="score-item he">
+    <img id="avatarHe" class="avatar">
+    <div id="reactionHe" class="avatar-reaction"></div>
+    <span class="label">
+      <i class="fa-solid fa-mars"></i>
+    </span>
+    <span id="scoreHe">0</span>
+  </div>
+
+  <div class="score-item she">
+    <img id="avatarShe" class="avatar">
+    <div id="reactionHe" class="avatar-reaction"></div>
+    <span class="label">
+      <i class="fa-solid fa-venus"></i>
+    </span>
+    <span id="scoreShe">0</span>
+  </div>
+
+</div>
+<!-- WHEEL -->
+<div class="wheel-container">
+  <div class="pointer"></div>
+  <div id="wheel"></div>
+</div>
+
+
+<button id="spinBtn" class="spin-btn">ȚINE APĂSAT</button>
+<div class="power-bar">
+  <div id="powerFill"></div>
+</div>
+<div id="switchMessage" class="switch-message"></div>
+
+
+<!-- RESULT OVERLAY -->
+<div id="resultOverlay" class="result-overlay hidden">
+  <div class="result-box">
+    <img id="resultImg" src="" alt="">
+    <h2 id="resultText"></h2>
+    <div class="result-actions">
+  <button id="rejectResult" class="reject">❌ Refuz</button>
+  <button id="acceptResult" class="accept">🔥 Accept</button>
+</div>
+  </div>
+</div>
+
+<div id="resetConfirm" class="reset-confirm hidden">
+  <div class="reset-box">
+    <p>Sigur vrei să resetezi scorul? 😏</p>
+    <div class="reset-actions">
+      <button id="confirmReset" class="yes">DA</button>
+      <button id="cancelReset" class="no">NU</button>
+    </div>
+  </div>
+</div>
+<div id="funPopup" class="fun-popup"></div>
+
+<script src="../../globalstats.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

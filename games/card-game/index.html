@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/f26a888174.js" crossorigin="anonymous"></script>
+  <title>🂡 Card Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="intro">
+  <div class="intro-logo">
+    <span>C</span>
+    <span>A</span>
+    <span>R</span>
+    <span>D</span>
+    <span>S</span>
+    <span>&nbsp</span>
+    <span>G</span>
+    <span>A</span>
+    <span>M</span>
+    <span>E</span>
+  </div>
+</div>
+<div id="loader" class="loader">
+  <div class="heart">
+    <span></span>
+  </div>
+  <p>Loading</p>
+</div>
+<div id="playerMenu" class="player-menu">
+  <div class="player-card">
+    <h2>Cine decide? 😏</h2>
+
+    <div class="player-buttons">
+  <button id="chooseHe" class="btn he">
+  <img id="avatarStartHe" class="start-avatar">
+  <div id="reactionHe" class="avatar-reaction"></div>
+</button>
+
+<button id="chooseShe" class="btn she">
+  <img id="avatarStartShe" class="start-avatar">
+  <div id="reactionHe" class="avatar-reaction"></div>
+</button>
+</div>
+
+
+  </div>
+</div>
+<div id="resetConfirm" class="reset-confirm hidden">
+  <div class="reset-box">
+    <p id="resetText">Sigur vrei să resetezi scorul? 😏</p>
+    <div class="reset-actions">
+      <button id="confirmReset" class="yes">DA 🔥</button>
+      <button id="cancelReset" class="no">NU 🙈</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="board"></div>
+
+<div class="control-dock">
+
+  <!-- BACK TO MENU -->
+  <button class="back-menu" data-tip="Meniu" onclick="location.href='../../index.html'">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
+
+  <!-- SWITCH PLAYER -->
+  <button id="switchPlayer" data-tip="Schimbă jucătorul">
+    <i class="fa-solid fa-arrows-rotate"></i>
+  </button>
+
+  <!-- RANDOM CARD -->
+  <button id="randomCard" data-tip="Carte aleatorie">
+    <i class="fa-solid fa-shuffle"></i>
+  </button>
+
+  <!-- SHUFFLE / RESET ROUND -->
+ <button id="reset" data-tip="Amestecă">
+  <i class="fa-solid fa-layer-group"></i>
+</button>
+
+
+  <!-- RESET SCORE -->
+  <button id="resetScore" data-tip="Reset scor">
+    <i class="fa-solid fa-broom"></i>
+  </button>
+
+</div>
+
+
+
+<div id="overlay" class="overlay hidden">
+  <div class="overlay-content">
+    <button id="closeOverlay">❌</button>
+    <img id="overlay-img" src="" alt="Imagine card">
+    <p id="overlay-text"></p>
+     <div id="decisionBox" class="decision hidden">
+      <button id="refuseCard" class="refuse-btn">❌ Refuz</button>
+      <button id="acceptCard" class="accept-btn">🔥 Accept</button>
+    </div>
+
+  </div>
+</div>
+<div id="switchMessage" class="switch-message"></div>
+
+
+<!-- SCORE -->
+<div id="scoreBoard">
+
+  <div class="score-item he">
+    <img id="avatarHe" class="avatar">
+    <span class="label">
+      <i class="fa-solid fa-mars"></i>
+    </span>
+    <span id="scoreHe">0</span>
+  </div>
+
+  <div class="score-item she">
+    <img id="avatarShe" class="avatar">
+    <span class="label">
+      <i class="fa-solid fa-venus"></i>
+    </span>
+    <span id="scoreShe">0</span>
+  </div>
+
+</div>
+
+
+<div id="thankPopup" class="thank-popup hidden">
+🫣hmm..😏buna alegere!
+</div>
+
+<div id="endPanel" class="end-panel hidden">
+  <div class="end-box">
+    <h2>🔥 Uraa.! 🔥</h2>
+    <p>Toate cărțile au fost jucate 😏</p>
+    <button id="restartGame">🂡 Reîncepe jocul</button>
+  </div>
+</div>
+<script src="../../globalstats.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

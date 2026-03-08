@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎁 Mystery Box</title>
+
+  <script src="https://kit.fontawesome.com/f26a888174.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style-mb.css">
+</head>
+<body>
+
+<div class="control-dock">
+  <button onclick="location.href='../../index.html'">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
+  <button id="switchPlayer">
+    <i class="fa-solid fa-mars"></i>
+  </button>
+</div>
+
+<div id="scoreBoard">
+  <div class="score he">
+    <i class="fa-solid fa-mars"></i>
+    <span id="scoreHe">0</span>
+  </div>
+  <div class="score she">
+    <i class="fa-solid fa-venus"></i>
+    <span id="scoreShe">0</span>
+  </div>
+</div>
+
+<h1>🎁 Mystery Box</h1>
+
+<div class="box-container">
+  <div id="box" class="box"></div>
+</div>
+
+<button id="openBtn">DESCHIDE</button>
+
+<div id="overlay" class="overlay hidden">
+  <div class="overlay-box">
+    <p id="overlayText"></p>
+    <button id="closeOverlay">OK</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
