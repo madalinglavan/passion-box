@@ -646,13 +646,7 @@ body {
   z-index: 10;
 }
 
-.score-item.he.active {
-  box-shadow:
-}
 
-.score-item.she.active {
-  box-shadow:
-}
 
 /* =========================
    PLAYER SWITCH FLASH
@@ -749,4 +743,27 @@ body {
 
 .score-item.active .avatar{
   animation:avatarPulse 1.4s infinite;
+}
+
+.fullscreen-btn{
+position:fixed;
+bottom:15px;
+right:15px;
+z-index:9999;
+
+width:40px;
+height:40px;
+
+border:none;
+border-radius:8px;
+
+background:#111;
+color:white;
+
+font-size:18px;
+cursor:pointer;
+}
+
+.fullscreen-btn.active{
+background:#ff3c78;
 }
