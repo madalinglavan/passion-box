@@ -657,3 +657,63 @@ function avatarReact(player, emoji){
   },1500);
 
 }
+
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+function enterFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  }
+}
+
+function exitFullscreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
+}
+
+function updateFullscreenUI() {
+
+  if (!fullscreenBtn) return;
+
+  if (document.fullscreenElement) {
+
+    fullscreenBtn.classList.add("active");
+    fullscreenBtn.textContent = "✕";
+    localStorage.setItem("pb_fullscreen", "true");
+
+  } else {
+
+    fullscreenBtn.classList.remove("active");
+    fullscreenBtn.textContent = "⛶";
+    localStorage.setItem("pb_fullscreen", "false");
+
+  }
+}
+
+if (fullscreenBtn) {
+
+  fullscreenBtn.onclick = () => {
+
+    if (!document.fullscreenElement) {
+      enterFullscreen();
+    } else {
+      exitFullscreen();
+    }
+
+  };
+
+}
+
+document.addEventListener("fullscreenchange", updateFullscreenUI);
+
+/**********************
+ AUTO FULLSCREEN
+**********************/
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (localStorage.getItem("pb_fullscreen") === "true") {
+    enterFullscreen();
+  }
+
+});
