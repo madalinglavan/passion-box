@@ -91,11 +91,12 @@ const icons = {
  * GIFTS
  ***********************/
 const gifts = [
-  "💆 Masaj senzual timp de 5 minute",
-  "💃 Un dans lent, doar pentru tine",
-  "💋 Sărutări fără grabă",
-  "😏 Răsfăț ales de partener",
-  "🔥 Provocare romantică surpriză"
+  { label: "Filmeaza-ti partenerul facandu-ti oral - 5 minute", img: "img/filming.jpg" },
+  { label: "Masaj erotic 30 minute", img: "img/massage.png" },
+  { label: "Preludiu - 30 minute", img: "img/position.jpg" },
+  { label: "Blind Taste Challenge", img: "img/Blind Taste Challenge.jpg" },
+  { label: "Dragoste profunda", img: "img/love.jpg" },
+  { label: "Sarut - 30 minute", img: "img/kiss.jpg" }
 ];
 
 /***********************
@@ -246,6 +247,7 @@ function checkWin() {
  * GIFT
  ***********************/
 giftBox.onclick = () => {
+
   const gift = gifts[Math.floor(Math.random() * gifts.length)];
 
   const names = typeof getCoupleNames === "function"
@@ -258,7 +260,11 @@ giftBox.onclick = () => {
       : names.she;
 
   giftTitle.textContent = "🎉 " + winnerName + " a câștigat!";
-  giftTextEl.textContent = gift;
+
+  giftTextEl.innerHTML = `
+    <img src="${gift.img}" class="gift-img">
+    <div class="gift-label">${gift.label}</div>
+  `;
 
   giftOverlay.classList.remove("hidden");
 
