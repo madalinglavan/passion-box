@@ -32,6 +32,8 @@ hitSound.volume = 0.6;
 const gameIntroSound = new Audio("sounds/game_intro.mp3");
 gameIntroSound.volume = 0.7;
 
+const diceSound = new Audio("sounds/dice.mp3");
+diceSound.volume = 0.7;
 /*************************
  * GLOBAL UI UPDATE
  *************************/
@@ -227,7 +229,8 @@ uploadShe.addEventListener("change", function () {
  * THROW RANDOM GAME
  *************************/
 throwBtn.onclick = () => {
-
+  diceSound.currentTime = 0;
+  diceSound.play().catch(()=>{});
   // 🛡 protecție dacă nu există carduri
   if (!gameCards.length) return;
 
