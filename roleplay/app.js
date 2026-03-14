@@ -33,6 +33,10 @@ const steps = [
 let currentStep = 0;
 let selections = {};
 
+
+const dice = new Audio("sounds/dice.mp3");
+dice.volume = 0.7;
+dice.play().catch(()=>{});
 /************************************************
  📦 DATE
 ************************************************/
@@ -156,39 +160,50 @@ function renderStep() {
 
   randomBtn.onclick = () => {
 
-    const options = data[step.key];
+  const options = data[step.key];
 
-    let spinCount = 0;
+  let spinCount = 0;
 
-    const spin = setInterval(() => {
+  // 🔊 sunet zar
+  diceSound.currentTime = 0;
+  diceSound.loop = true;
 
-      const random =
+  diceSound.play().catch(() => {});
+
+  const spin = setInterval(() => {
+
+    const random =
+      options[Math.floor(Math.random() * options.length)];
+
+    resultCard.innerText = random;
+
+    spinCount++;
+
+    if (spinCount > 15) {
+
+      clearInterval(spin);
+
+      // ⛔ oprește sunetul corect
+      diceSound.loop = false;
+      diceSound.pause();
+      diceSound.currentTime = 0;
+
+      const final =
         options[Math.floor(Math.random() * options.length)];
 
-      resultCard.innerText = random;
+      resultCard.innerText = final;
 
-      spinCount++;
+      resultCard.classList.add("selected");
 
-      if (spinCount > 15) {
+      selections[step.key] = final;
 
-        clearInterval(spin);
+      nextBtn.classList.remove("hidden");
 
-        const final =
-          options[Math.floor(Math.random() * options.length)];
+    }
 
-        resultCard.innerText = final;
+  }, 80);
 
-        resultCard.classList.add("selected");
-
-        selections[step.key] = final;
-
-        nextBtn.classList.remove("hidden");
-
-      }
-
-    }, 80);
-
-  };
+};
 
   progress.style.width =
     (currentStep / steps.length) * 100 + "%";
