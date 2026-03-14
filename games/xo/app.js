@@ -22,23 +22,35 @@ const giftOverlay = document.getElementById("giftOverlay");
 const giftTitle = document.getElementById("giftTitle");
 const giftTextEl = document.getElementById("giftText");
 const closeGiftOverlay = document.getElementById("closeGiftOverlay");
-const soundMove = new Audio("sounds/click.mp3");
+/***********************
+ * SOUNDS
+ ***********************/
+const soundMove = new Audio("sounds/move.mp3");
+const soundHover = new Audio("sounds/hover.mp3");
 const soundWin = new Audio("sounds/win.mp3");
+const soundDraw = new Audio("sounds/draw.mp3");
 const soundSwitch = new Audio("sounds/switch.mp3");
 const soundGift = new Audio("sounds/gift.mp3");
+const soundRestart = new Audio("sounds/restart.mp3");
 
 soundMove.volume = 0.6;
-soundWin.volume = 0.7;
+soundHover.volume = 0.4;
+soundWin.volume = 0.8;
+soundDraw.volume = 0.7;
 soundSwitch.volume = 0.6;
 soundGift.volume = 0.7;
+soundRestart.volume = 0.6;
 
 function unlockAudio(){
 
   const sounds = [
     soundMove,
+    soundHover,
     soundWin,
+    soundDraw,
     soundSwitch,
-    soundGift
+    soundGift,
+    soundRestart
   ];
 
   sounds.forEach(s => {
@@ -118,6 +130,10 @@ function init() {
     cell.className = "cell";
     cell.dataset.index = i;
     cell.onclick = handleMove;
+    cell.onmouseenter = () => {
+  soundHover.currentTime = 0;
+  soundHover.play().catch(()=>{});
+};
     boardEl.appendChild(cell);
   }
 
@@ -165,12 +181,16 @@ function handleMove(e) {
     return;
   }
 
-  if (board.every(Boolean)) {
-    gameActive = false;
-    statusEl.textContent = "🤝 Egalitate!";
-    restartBtn.classList.remove("hidden");
-    return;
-  }
+if (board.every(Boolean)) {
+
+  soundDraw.currentTime = 0;
+  soundDraw.play().catch(()=>{});
+
+  gameActive = false;
+  statusEl.textContent = "🤝 Egalitate!";
+  restartBtn.classList.remove("hidden");
+  return;
+}
 
   currentPlayer = currentPlayer === "he" ? "she" : "he";
 
@@ -247,7 +267,8 @@ function checkWin() {
  * GIFT
  ***********************/
 giftBox.onclick = () => {
-
+soundGift.currentTime = 0;
+soundGift.play().catch(()=>{});
   const gift = gifts[Math.floor(Math.random() * gifts.length)];
 
   const names = typeof getCoupleNames === "function"
@@ -330,7 +351,14 @@ function launchConfetti() {
 /***********************
  * RESTART
  ***********************/
-restartBtn.onclick = init;
+restartBtn.onclick = () => {
+
+  soundRestart.currentTime = 0;
+  soundRestart.play().catch(()=>{});
+
+  init();
+
+};
 
 /***********************
  * START
