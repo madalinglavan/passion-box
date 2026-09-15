@@ -1,0 +1,55 @@
+.xo-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 354px;
+  margin: 26px auto;
+}
+
+.xo-cell {
+  aspect-ratio: 1;
+  border: 1px solid #e5d5cd;
+  border-radius: 14px;
+  background: #f3ece5;
+  font: 77px/1 var(--serif);
+  color: var(--wine);
+  transition: background .2s, transform .2s;
+}
+
+.xo-cell:hover:not(:disabled) {
+  background: var(--blush);
+  transform: scale(.97);
+}
+
+.xo-cell:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.xo-cell.she {
+  color: #967c65;
+  background: #eee5d9;
+}
+
+.xo-cell.winning {
+  border-color: var(--wine);
+  background: #ead4cc;
+  box-shadow: inset 0 0 0 1px var(--wine);
+}
+
+.xo-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 25px 0 8px;
+}
+
+@media (max-width: 450px) {
+  .xo-board {
+    gap: 9px;
+  }
+  .xo-cell {
+    font-size: 64px;
+  }
+}
