@@ -1,0 +1,108 @@
+.wheel-stage {
+  position: relative;
+  width: min(360px, 100%);
+  aspect-ratio: 1;
+  margin: 30px auto;
+}
+
+.wheel {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(#702c40 0deg 60deg, #e7b6a7 60deg 120deg, #89947f 120deg 180deg, #d9c4ae 180deg 240deg, #98657b 240deg 300deg, #c7988b 300deg 360deg);
+  box-shadow: 0 0 0 8px #eee5dc, 0 0 0 9px #d8c9bd, 0 18px 35px #4b2b3c15;
+  transition: transform 3.2s cubic-bezier(.16,.7,.1,1);
+}
+
+.wheel::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid #fff6e950;
+  border-radius: 50%;
+}
+
+.wheel-symbol {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  margin: -22px;
+  font: 40px/44px var(--serif);
+  text-align: center;
+  color: #fff6e9;
+  transform: rotate(calc(var(--i) * 60deg + 30deg)) translateY(-113px);
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -17px;
+  left: calc(50% - 12px);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 25px solid var(--wine-dark);
+  z-index: 2;
+}
+
+.wheel-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  color: var(--wine);
+  font: italic 31px var(--serif);
+  box-shadow: 0 3px 10px #3d192530;
+}
+
+.spin-controls {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.spin-controls .button {
+  min-width: 200px;
+  user-select: none;
+  touch-action: none;
+}
+
+.spin-controls p {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 9px;
+}
+
+.charge-track {
+  height: 3px;
+  width: 160px;
+  margin: 15px auto;
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.charge-track div {
+  height: 100%;
+  width: 0;
+  background: var(--wine);
+}
+
+@media (max-width: 450px) {
+  .wheel-stage {
+    max-width: 265px;
+  }
+  .wheel-symbol {
+    transform: rotate(calc(var(--i) * 60deg + 30deg)) translateY(-85px);
+    font-size: 32px;
+  }
+  .wheel-hub {
+    width: 58px;
+    height: 58px;
+    font-size: 25px;
+  }
+}
