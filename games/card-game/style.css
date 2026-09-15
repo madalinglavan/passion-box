@@ -1,0 +1,99 @@
+.cards-board {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0,1fr));
+  gap: 10px;
+}
+
+.playing-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: .7;
+  border: 1px solid #915366;
+  border-radius: 7px;
+  background: var(--wine);
+  color: #efd9c5;
+  padding: 0;
+  box-shadow: 0 3px 8px #50213313;
+  transition: transform .2s, background .2s;
+}
+
+.playing-card::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #efd9c53d;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.playing-card:hover:not(:disabled) {
+  transform: translateY(-5px) rotate(-2deg);
+  background: #8a3b52;
+}
+
+.playing-card-number {
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  font: 10px var(--serif);
+}
+
+.playing-card-symbol {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 48px var(--serif);
+}
+
+.playing-card-brand {
+  position: absolute;
+  bottom: 9px;
+  left: 7px;
+  right: 7px;
+  font-size: 5px;
+  letter-spacing: .07em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playing-card.used {
+  background: #e9e5dc;
+  border-color: #d9d4c9;
+  color: #86907d;
+  opacity: 1;
+  cursor: default;
+}
+
+.playing-card.used .playing-card-symbol {
+  font-size: 26px;
+}
+
+.cards-count {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 22px;
+}
+
+@media (max-width: 760px) {
+  .cards-board {
+    grid-template-columns: repeat(5, minmax(0,1fr));
+    gap: 8px;
+  }
+  .playing-card-symbol {
+    font-size: 39px;
+  }
+  .game-toolbar {
+    gap: 8px;
+  }
+  .game-toolbar .text-button {
+    padding: 9px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .cards-board {
+    grid-template-columns: repeat(4, minmax(0,1fr));
+  }
+}
